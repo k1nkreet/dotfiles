@@ -9,25 +9,14 @@ set incsearch
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-" Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-fugitive'
-
-call vundle#end()            " required
-
 call plug#begin('~/.vim/plugged')
-Plug '~/.fzf'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'brookhong/cscope.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-fugitive'
 call plug#end()
+
 
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
