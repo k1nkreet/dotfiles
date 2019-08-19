@@ -15,12 +15,12 @@ Plug 'junegunn/fzf.vim'
 Plug 'brookhong/cscope.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
+Plug 'lifepillar/vim-mucomplete'
+Plug 'davidhalter/jedi-vim'
+Plug 'xavierd/clang_complete'
 call plug#end()
 
-
 filetype plugin on
-set omnifunc=syntaxcomplete#Complete
-
 
 map <F5> :NERDTreeToggle<CR> 
 map <Leader>f :Files<CR>
@@ -28,6 +28,10 @@ map <Leader>t :Tags<CR>
 map <Leader>b :Buffers<CR>
 map <Leader>a yiw :Ag <C-r>"<CR>
 let $FZF_DEFAULT_COMMAND= 'ag -g ""'
+
+map gS :Gstatus<CR>
+map gC :Gcommit<CR>
+
 command! -bang -nargs=* Ag
   \ call fzf#vim#ag(<q-args>,
   \                 '--ignore={tags,cscope*}',
@@ -36,11 +40,23 @@ command! -bang -nargs=* Ag
   \                 <bang>0)
 
 noremap <F4> :set hlsearch! hlsearch?<CR>
+set pastetoggle=<F2>
 
-
-" augroup refresh_ctags
-"     autocmd!
-"     au BufWritePost *.py,*.c,*.cpp,*.h silent! !eval '(cd /home/k1nkreet/Work/datalore-super/datalore-notebook/python-runtime/src/main/cpp; ctags -R --exclude=bazel-* -o newtags; mv newtags tags)' &
-"     au BufWritePost *.py,*.c,*.cpp,*.h silent! !eval '(cd /home/k1nkreet/Work/datalore-super/datalore-notebook/python-runtime/src/main/python; ctags -R --exclude=bazel-* -o newtags 2>/dev/null; mv newtags tags)' &
-" augroup END
 autocmd Filetype java setlocal ts=2 sw=2 expandtab
+colorscheme codefocus
+
+" mucomplete options
+set completeopt+=menuone
+set completeopt+=noselect
+set shortmess+=c " Shut off copmletion messages
+set belloff+=ctrlg " If Vim beeps during completion
+" mucopmlete python
+set completeopt-=preview
+set completeopt+=longest
+let g:jedi#popup_on_dot = 1
+let g:mucomplete#enable_auto_at_startup = 0
+" mucomplete c++
+set noinfercase
+let g:clang_library_path = '/usr/lib/libclang.so'
+let g:clang_user_options = '-std=c++14'
+let g:clang_complete_auto = 1
