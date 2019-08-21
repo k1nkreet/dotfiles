@@ -60,3 +60,6 @@ set noinfercase
 let g:clang_library_path = '/usr/lib/libclang.so'
 let g:clang_user_options = '-std=c++14'
 let g:clang_complete_auto = 1
+let g:clang_auto_select = 2
+let g:clang_hl_error = 1
+let g:clang_jumpto_declaration_key = "<C-P>"
