@@ -43,6 +43,8 @@ noremap <F4> :set hlsearch! hlsearch?<CR>
 set pastetoggle=<F2>
 
 autocmd Filetype java setlocal ts=2 sw=2 expandtab
+"autocmd Filetype c,h setlocal ts=8 sw=8 expandtab
+autocmd BufRead,BufNewFile *.h,*.c setlocal ts=9 sw=8 expandtab
 colorscheme codefocus
 
 " mucomplete options
@@ -63,3 +65,4 @@ let g:clang_complete_auto = 1
 let g:clang_auto_select = 2
 let g:clang_hl_error = 1
 let g:clang_jumpto_declaration_key = "<C-P>"
+let g:clang_complete_macros = 1
