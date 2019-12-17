@@ -15,22 +15,16 @@ Plug 'junegunn/fzf.vim'
 Plug 'brookhong/cscope.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
-Plug 'lifepillar/vim-mucomplete'
-Plug 'davidhalter/jedi-vim'
-Plug 'xavierd/clang_complete'
-Plug 'rust-lang/rust.vim'
-Plug 'racer-rust/vim-racer'
-Plug 'vim-syntastic/syntastic'
 Plug 'liuchengxu/vim-clap', { 'do': function('clap#helper#build_all') }
-Plug 'liuchengxu/vista.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 filetype plugin on
 
 map <F5> :NERDTreeToggle<CR> 
-map <Leader>f :Clap files<CR>
+map <Leader>f :Files<CR>
 map <Leader>t :Tags<CR>
-" map <Leader>b :Buffers<CR>
+map <Leader>b :Buffers<CR>
 " map <Leader>a yiw :Ag <C-r>"<CR>
 map <Leader>a :Clap grep ++query=<cword><CR>
 map <Leader>l :Clap lines<CR>
@@ -56,32 +50,14 @@ colorscheme codefocus
 
 let g:vista_default_executive = 'ctags'
 
-" mucomplete options
-set completeopt+=menuone
-set completeopt+=noselect
-set shortmess+=c " Shut off copmletion messages
-set belloff+=ctrlg " If Vim beeps during completion
-" mucopmlete python
-set completeopt-=preview
-set completeopt+=longest
-let g:jedi#popup_on_dot = 1
-let g:mucomplete#enable_auto_at_startup = 0
-" mucomplete c++
-set noinfercase
-let g:clang_library_path = '/usr/lib/libclang.so'
-let g:clang_user_options = '-std=c++14'
-let g:clang_complete_auto = 1
-let g:clang_auto_select = 2
-let g:clang_hl_error = 1
-let g:clang_jumpto_declaration_key = "<C-P>"
-let g:clang_complete_macros = 1
+" Tab-completion: "
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
 
-" syntactic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+" / Tab-completion
