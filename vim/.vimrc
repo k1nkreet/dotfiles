@@ -45,6 +45,8 @@ set pastetoggle=<F2>
 
 autocmd Filetype java setlocal ts=2 sw=2 expandtab
 "autocmd Filetype c,h setlocal ts=8 sw=8 expandtab
+autocmd FileType python let b:coc_root_patterns = ['.git', '.env']
+
 autocmd BufRead,BufNewFile *.h,*.c setlocal ts=9 sw=8 expandtab
 colorscheme codefocus
 
@@ -61,3 +63,23 @@ inoremap <silent><expr> <Tab>
       \ <SID>check_back_space() ? "\<Tab>" :
       \ coc#refresh()
 " / Tab-completion
+
+" VimClap grep preview window for bright st
+hi ClapPreview  ctermbg=187
+
+" Coc settings
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+nmap <silent> <Leader>d <Plug>(coc-definition)
+nmap <silent> <Leader>y <Plug>(coc-type-definition)
+nmap <silent> <Leader>i <Plug>(coc-implementation)
+nmap <silent> <Leader>R <Plug>(coc-references)
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
+nmap <leader>r <Plug>(coc-rename)
+
+" Remap for format selected region
+xmap <leader>F  <Plug>(coc-format-selected)
+nmap <leader>F  <Plug>(coc-format-selected)
+

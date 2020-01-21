@@ -16,8 +16,8 @@ endif
 let colors_name = "codefocus"
 
 hi Normal      ctermfg=none ctermbg=none
-hi Comment     cterm=italic ctermfg=Gray ctermbg=none
-hi String      cterm=italic ctermfg=none ctermbg=none
+hi Comment     cterm=NONE ctermfg=Gray ctermbg=none
+hi String      cterm=NONE ctermfg=Gray ctermbg=none
 hi Constant    cterm=NONE ctermfg=none
 hi Identifier  cterm=NONE ctermfg=none
 hi Function    cterm=NONE ctermfg=none
@@ -30,3 +30,5 @@ hi diffAdded   ctermfg=none
 hi diffRemoved ctermfg=none
 hi Visual      ctermfg=none
 hi ColorColumn ctermbg=none
+hi Directory   ctermbg=NONE ctermfg=Blue
+hi Title       ctermbg=NONE ctermfg=Green
