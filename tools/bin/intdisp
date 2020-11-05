@@ -1,0 +1,6 @@
+#!/bin/sh
+
+xrandr --output eDP-1 --auto
+
+dispname=$(extdispname)
+[ -n "$dispname" ] && xrandr --output "$dispname" --off

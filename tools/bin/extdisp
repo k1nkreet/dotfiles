@@ -1,0 +1,4 @@
+#!/bin/sh
+
+dispname=$(test -n "$1" && echo "$1" || extdispname)
+test -n "$dispname" && xrandr --output eDP-1 --off --output "$dispname" --auto

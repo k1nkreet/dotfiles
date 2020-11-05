@@ -1,0 +1,19 @@
+#!/bin/sh
+
+bd_mask=/sys/devices/pci0000:00/0000:00:02.0/drm/card*/card*-eDP-1/intel_backlight/brightness
+bd=$( ls $bd_mask )
+bdv=$( cat $bd )
+step=10
+
+case $1 in
+	inc)
+		echo $(( bdv + step )) > $bd
+		cat $bd
+	;;
+	dec)
+		echo $(( bdv - step )) > $bd
+		cat $bd
+	;;
+	*)
+	echo "$bdv"
+esac
