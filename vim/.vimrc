@@ -48,3 +48,5 @@ autocmd Filetype go setlocal ts=8 sw=8 expandtab
 autocmd BufRead,BufNewFile *.h,*.c setlocal ts=8 sw=8 expandtab
 colorscheme codefocus
 
+let g:ycm_autoclose_preview_window_after_insertion=1
+
