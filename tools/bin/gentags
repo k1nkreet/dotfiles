@@ -1,0 +1,32 @@
+#!/bin/sh
+
+# path=${1:-.}
+
+path=`pwd`
+echo "path is $path"
+
+find "$path/" -name target -prune -o \
+       \(     -name "*.c" \
+          -o  -name "*.cpp" \
+          -o  -name "*.cxx" \
+          -o  -name "*.h" \
+          -o  -name "*.hpp" \
+          -o  -name "*.py" \
+          -o  -name "*.java" \
+          -o  -name "*.sh" \
+	      -o  -name "*.rs" \
+          -o  -name "*.txt" \
+          -o  -name "*.cmake" \
+          -o  -name "*.proto" \
+          -o  -name "*.xml" \
+          -o  -name "*.bzl" \
+          -o  -name "*.ts" \
+          -o  -name "*.js" \
+          -o  -name "BUILD*" \
+          -o  -name "WORKSPACE" \
+       \) \
+       -print > cscope.files
+
+ctags -L cscope.files --c++-kinds=+p --fields=+iaS --extra=+q "$path"
+cscope -bq
+# rm cscope.files
