@@ -17,10 +17,47 @@ Plug 'junegunn/fzf.vim'
 Plug 'brookhong/cscope.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
-Plug 'ycm-core/YouCompleteMe'
+Plug 'racer-rust/vim-racer'
+Plug 'neomake/neomake'
+
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 call plug#end()
 
 filetype plugin on
+
+let g:deoplete#enable_at_startup = 1
+let g:neomake_open_list = 2
+map M :Neomake<CR>
+map mc :lclose<CR>
+map mo :lopen<CR>
+
+" mucomplete settings
+" set completeopt+=menuone
+" set completeopt+=noselect
+" set shortmess+=c
+" set belloff+=ctrlg
+" let g:mucomplete#enable_auto_at_startup = 1
+
+" rust
+let g:racer_cmd = "/usr/bin/racer"
+let g:racer_experimental_completer = 1
+setlocal omnifunc=racer#RacerComplete
+
+augroup Racer
+    autocmd!
+    autocmd FileType rust nmap <buffer> gd         <Plug>(rust-def)
+    autocmd FileType rust nmap <buffer> gs         <Plug>(rust-def-split)
+    autocmd FileType rust nmap <buffer> gx         <Plug>(rust-def-vertical)
+    autocmd FileType rust nmap <buffer> gt         <Plug>(rust-def-tab)
+    autocmd FileType rust nmap <buffer> <leader>gd <Plug>(rust-doc)
+    autocmd FileType rust nmap <buffer> <leader>gD <Plug>(rust-doc-tab)
+augroup END
 
 map <F5> :NERDTreeToggle<CR> 
 map <Leader>F :Files<CR>
@@ -47,6 +84,3 @@ autocmd Filetype go setlocal ts=8 sw=8 expandtab
 
 autocmd BufRead,BufNewFile *.h,*.c setlocal ts=8 sw=8 expandtab
 colorscheme codefocus
-
-let g:ycm_autoclose_preview_window_after_insertion=1
-
