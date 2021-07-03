@@ -8,6 +8,7 @@ set incsearch
 
 " set term=ansi
 
+set nofoldenable              " disable folding
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -19,6 +20,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'racer-rust/vim-racer'
 Plug 'neomake/neomake'
+Plug 'https://git.sr.ht/~k1nkreet/gemivim'
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -36,6 +38,7 @@ let g:neomake_open_list = 2
 map M :Neomake<CR>
 map mc :lclose<CR>
 map mo :lopen<CR>
+map mC :NeomakeClean<CR>:lclose<CR>
 
 " mucomplete settings
 " set completeopt+=menuone
@@ -79,8 +82,12 @@ noremap <F4> :set hlsearch! hlsearch?<CR>
 set pastetoggle=<F2>
 
 autocmd Filetype java setlocal ts=2 sw=2 expandtab
-"autocmd Filetype c,h setlocal ts=8 sw=8 expandtab
+autocmd Filetype c,h setlocal ts=8 sw=8 expandtab
 autocmd Filetype go setlocal ts=8 sw=8 expandtab
 
 autocmd BufRead,BufNewFile *.h,*.c setlocal ts=8 sw=8 expandtab
 colorscheme codefocus
+
+map gx :GemivimGX<CR>
+map <Leader>o :GemivimOpen<CR>
+map <Leader>O :GemivimOpenBookmarks<CR>
