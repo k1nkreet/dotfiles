@@ -1,0 +1,13 @@
+source ~/.mutt/password.k1nkreet.org
+set folder = imaps://imap.migadu.com
+set spoolfile = +INBOX
+set imap_keepalive = 900
+set from = ip@k1nkreet.org
+set smtp_url = smtps://$imap_user@smtp.migadu.com
+set smtp_pass = $imap_pass
+set postponed = +Drafts
+set record = +Sent
+mailboxes = +INBOX
+
+set message_cachedir = ~/.mutt/ip.k1nkreet.org/cache/
+set header_cache = ~/.mutt/ip.k1nkreet.org/cache/
