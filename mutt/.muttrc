@@ -29,3 +29,6 @@ bind index K sidebar-prev
 bind index I sidebar-open
 bind index S sidebar-toggle-visible
 # source ~/.mutt/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc
+#
+# source of colorscheme: https://github.com/d3ckard/mutt_color_themes
+source ~/.mutt/colors-softaqua
