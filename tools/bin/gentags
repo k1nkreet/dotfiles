@@ -15,6 +15,7 @@ find "$path/" -name target -prune -o \
           -o  -name "*.java" \
           -o  -name "*.sh" \
 	      -o  -name "*.rs" \
+          -o  -name "*.go" \
           -o  -name "*.txt" \
           -o  -name "*.cmake" \
           -o  -name "*.proto" \
