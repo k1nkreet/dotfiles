@@ -20,20 +20,16 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'racer-rust/vim-racer'
 Plug 'neomake/neomake'
+Plug 'neovimhaskell/haskell-vim'
+Plug 'LnL7/vim-nix'
+Plug 'lifepillar/vim-mucomplete'
 Plug 'https://git.sr.ht/~k1nkreet/gemivim'
-
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+Plug 'Chiel92/vim-autoformat'
 call plug#end()
 
 filetype plugin on
+filetype plugin indent on
 
-let g:deoplete#enable_at_startup = 1
 let g:neomake_open_list = 2
 map M :Neomake<CR>
 map mc :lclose<CR>
@@ -41,14 +37,16 @@ map mo :lopen<CR>
 map mC :NeomakeClean<CR>:lclose<CR>
 
 " mucomplete settings
-" set completeopt+=menuone
-" set completeopt+=noselect
-" set shortmess+=c
-" set belloff+=ctrlg
-" let g:mucomplete#enable_auto_at_startup = 1
+set completeopt-=preview
+set completeopt+=menuone
+set completeopt+=noselect
+set shortmess+=c
+set belloff+=ctrlg
+let g:mucomplete#enable_auto_at_startup = 1
+let g:mucomplete#completion_delay = 1
 
 " rust
-let g:racer_cmd = "/usr/bin/racer"
+" let g:racer_cmd = "/home/k1nkreet/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
 setlocal omnifunc=racer#RacerComplete
 
@@ -69,13 +67,13 @@ map <Leader>t :Tags<CR>
 map <Leader>b :Buffers<CR>
 map <Leader>a yiw :Ags <C-r>"<CR>
 
-map gS :Gstatus<CR>
+map gS :Git<CR>
 map gC :Gcommit<CR>
 
 "Command for case-sensitive search with ag
 command! -bang -nargs=* Ags
   \ call fzf#vim#grep(
-  \   'ag -s --no-group --column --color -- '.shellescape(<q-args>), 1,
+  \   'ag -s --hidden --no-group --column --color -- '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview(), <bang>0)
 
 noremap <F4> :set hlsearch! hlsearch?<CR>
@@ -83,7 +81,8 @@ set pastetoggle=<F2>
 
 autocmd Filetype java setlocal ts=2 sw=2 expandtab
 autocmd Filetype c,h setlocal ts=8 sw=8 expandtab
-autocmd Filetype go setlocal ts=8 sw=8 expandtab
+autocmd Filetype go setlocal ts=8 sw=8 noexpandtab
+autocmd Filetype haskell setlocal ts=2 sw=2 expandtab
 
 autocmd BufRead,BufNewFile *.h,*.c setlocal ts=8 sw=8 expandtab
 colorscheme codefocus
@@ -91,3 +90,7 @@ colorscheme codefocus
 map gx :GemivimGX<CR>
 map <Leader>o :GemivimOpen<CR>
 map <Leader>O :GemivimOpenBookmarks<CR>
+
+" let g:formatdef_ormolu = '"ormolu"'
+" let g:formatters_haskell = ['ormolu']
+

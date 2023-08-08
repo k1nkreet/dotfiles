@@ -23,6 +23,8 @@ find "$path/" -name target -prune -o \
           -o  -name "*.bzl" \
           -o  -name "*.ts" \
           -o  -name "*.js" \
+          -o  -name "*.hs" \
+          -o  -name "*.ml" \
           -o  -name "BUILD*" \
           -o  -name "WORKSPACE" \
        \) \

@@ -1,0 +1,11 @@
+#!/bin/sh
+
+dispname="$1"
+if ! xrandr | grep "^$1" --quiet; then
+    >&2 echo "No such display"
+    exit 1
+fi
+
+xrandr | grep "^$dispname" -A 1 | grep -v "connected" | awk '{print $1}'
+
+

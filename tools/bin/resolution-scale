@@ -1,0 +1,11 @@
+#!/bin/bash
+
+resolution="$1"
+if test "$resolution" = "2560x1440"; then
+    echo "1.25x1.25"
+elif test "$resolution" = "3840x2160"; then
+    echo "1x1"
+else
+    >&2 echo "Unknown resolution $resolution"
+    exit 1
+fi
