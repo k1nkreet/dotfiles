@@ -19,6 +19,11 @@ Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
+Plug 'neovim/nvim-lspconfig'
 call plug#end()
 
 map <F4> :set hlsearch! hlsearch?<CR>
@@ -39,6 +44,8 @@ augroup auFileTypes
     autocmd FileType markdown setlocal textwidth=100
 augroup end
 
+" completion
+let g:coq_settings = { 'auto_start': 'shut-up' }
 
 " spellchecks
 set spelllang=en
@@ -47,4 +54,4 @@ nnoremap <silent> <F11> :set spell!<cr>
 inoremap <silent> <F11> <C-O>:set spell!<cr>
 
 lua require('treesitter')
-"lua require('check')
+lua require('lsp')
