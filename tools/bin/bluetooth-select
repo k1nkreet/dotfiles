@@ -1,0 +1,12 @@
+#!/bin/sh
+
+fatal() {
+    >&2 echo "$1" && exit 1
+}
+
+bluetoothctl_exec() {
+    bluetoothctl -- $1
+}
+
+device=$( bluetoothctl_exec "devices" | fzf | cut -d' ' -f2)
+bluetoothctl_exec "connect $device"
