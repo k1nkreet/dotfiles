@@ -1,0 +1,39 @@
+#!/bin/sh
+
+fatal() {
+    >&2 echo "$1" && exit 1
+}
+
+bt_exec() {
+    bluetoothctl -- $1
+}
+
+bt_connect() {
+    device=$( bt_exec "devices" | fzf | cut -d' ' -f2)
+    bt_exec "connect $device"
+}
+
+bt_disconnect() {
+    bt_exec "disconnect"
+}
+
+bt_scan() {
+    bt_exec "scan on"
+}
+
+command="$1"
+case "$command" in
+    select|s)
+        bt_connect
+        ;;
+    disconnect|d)
+        bt_disconnect
+        ;;
+    scan|s)
+        bt_scan
+        ;;
+    *)
+        fatal "unknown command: $command"
+        ;;
+esac
+
