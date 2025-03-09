@@ -5,6 +5,7 @@ set tabstop=4
 set expandtab
 set shiftwidth=4
 set autoindent
+set mouse=
 
 set guicursor=i:block
 colorscheme codefocus
@@ -33,6 +34,9 @@ map <Leader>f :GFiles --exclude-standard --others --cached<CR>
 map <Leader>t :Tags<CR>
 map <Leader>b :Buffers<CR>
 map <Leader>a yiw :Ags <C-r>"<CR>
+
+autocmd BufEnter *.go :setlocal tabstop=8 shiftwidth=8 noexpandtab
+autocmd BufEnter *.proto :setlocal tabstop=4 shiftwidth=4 noexpandtab
 
 command! -bang -nargs=* Ags
   \ call fzf#vim#grep(

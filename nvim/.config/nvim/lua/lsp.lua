@@ -21,6 +21,9 @@ lspconfig.pyright.setup {coq.lsp_ensure_capabilities{}}
 lspconfig.clangd.setup {coq.lsp_ensure_capabilities{}}
 lspconfig.gopls.setup {coq.lsp_ensure_capabilities{}}
 
+vim.diagnostic.config({virtual_text=false})
+vim.diagnostic.enable(false)
+
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
