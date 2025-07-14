@@ -12,6 +12,9 @@ lspconfig.rust_analyzer.setup {
                 enable = false,
                 allTargets = false,
             },
+            cargo = {
+                allFeatures = true,
+            },
         },
       },
   -- }

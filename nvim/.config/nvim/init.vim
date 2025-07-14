@@ -36,7 +36,7 @@ map <Leader>b :Buffers<CR>
 map <Leader>a yiw :Ags <C-r>"<CR>
 
 autocmd BufEnter *.go :setlocal tabstop=8 shiftwidth=8 noexpandtab
-autocmd BufEnter *.proto :setlocal tabstop=4 shiftwidth=4 noexpandtab
+"autocmd BufEnter *.proto :setlocal tabstop=4 shiftwidth=4 noexpandtab
 
 command! -bang -nargs=* Ags
   \ call fzf#vim#grep(
