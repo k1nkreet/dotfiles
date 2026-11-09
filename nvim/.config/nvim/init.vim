@@ -8,9 +8,9 @@ set autoindent
 set mouse=
 
 set guicursor=i:block
-colorscheme codefocus
+colorscheme codefocusnv
 
-set syntax=off
+"set syntax=off
 filetype plugin on
 filetype plugin indent on
 

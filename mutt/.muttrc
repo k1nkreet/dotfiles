@@ -32,3 +32,7 @@ bind index S sidebar-toggle-visible
 #
 # source of colorscheme: https://github.com/d3ckard/mutt_color_themes
 source ~/.mutt/colors-softaqua
+
+set mailcap_path = ~/.mailcap
+# auto_view text/html                    # auto-display HTML
+auto_view application/pdf

@@ -65,7 +65,7 @@ map <Leader>F :Files<CR>
 map <Leader>f :GFiles --exclude-standard --others --cached<CR>
 map <Leader>t :Tags<CR>
 map <Leader>b :Buffers<CR>
-map <Leader>a yiw :Ags <C-r>"<CR>
+map <Leader>a yiw :Rgs <C-r>"<CR>
 
 map gS :Git<CR>
 map gC :Gcommit<CR>
@@ -74,6 +74,11 @@ map gC :Gcommit<CR>
 command! -bang -nargs=* Ags
   \ call fzf#vim#grep(
   \   'ag -s --hidden --no-group --column --color -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
+
+command! -bang -nargs=* Rgs
+  \ call fzf#vim#grep(
+  \   'rg -s --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview(), <bang>0)
 
 noremap <F4> :set hlsearch! hlsearch?<CR>

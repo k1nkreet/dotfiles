@@ -1,0 +1,8 @@
+#!/bin/bash
+
+flags="$*"
+
+nmcli device wifi rescan
+ssid=$(nmcli device wifi list | tail +2 | fzf | awk '{print $2}')
+nmcli device wifi connect "$ssid" 2>/dev/null || nmcli device wifi connect "$ssid" $flags
+

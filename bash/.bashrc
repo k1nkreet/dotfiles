@@ -15,9 +15,11 @@ export PATH="$PATH:/usr/local/go/bin:$HOME/.local/go/bin"
 export PATH="$HOME/.cargo/bin:$PATH"
 export EDITOR="vim"
 export GTEST_COLOR=1
-export RUSTUP_HOME="/home/k1nkreet/temp"
-export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+# export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-alias slack-surf='GDK_SCALE=2 surf jetbrains.slack.com'
+. "$HOME/.cargo/env"
+
+# opencode
+export PATH=/home/k1nkreet/.opencode/bin:$PATH
